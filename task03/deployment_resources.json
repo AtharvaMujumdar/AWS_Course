@@ -25,20 +25,22 @@
     "resource_type": "iam_policy",
     "tags": {}
   },
-  "hello": {
-    "resource_type": "api_gateway",
-    "deploy_stage": "api",
-    "dependencies": [],
-    "resources": {
-      "/hello":{
-        "GET": {
-          
-            "statusCode": 200,
-            "message": "Hello from Lambda"
-        
+  
+    "hello": {
+      "resource_type": "api_gateway",
+      "deploy_stage": "api",
+      "dependencies": [],
+      "resources": {
+        "/hello": {
+          "GET": {
+            "integration": "lambda",
+            "lambda_name": "hello_world",
+            "authorizer": "NONE"
+          }
         }
-      }
-    },
-    "tags": {}
+      },
+      "tags": {}
+    
   }
+  
 }
