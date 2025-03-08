@@ -29,7 +29,16 @@
     "resource_type": "api_gateway",
     "deploy_stage": "api",
     "dependencies": [],
-    "resources": {},
+    "resources": {
+      "/hello":{
+        "GET": {
+          
+            "statusCode": 200,
+            "message": "Hello from Lambda"
+        
+        }
+      }
+    },
     "tags": {}
   }
 }
