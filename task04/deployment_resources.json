@@ -1,0 +1,51 @@
+{
+  "resources": {
+    "SQSQueue": {
+      "type": "aws:sqs:queue",
+      "triggers": [
+        {
+          "function": "SQSHandler"
+        }
+      ]
+    },
+    "SNSTopic": {
+      "type": "aws:sns:topic",
+      "triggers": [
+        {
+          "function": "SNSHandler"
+        }
+      ]
+    },
+    "lambda-basic-execution": {
+      "resource_type": "iam_policy",
+      "policy_content": {
+        "Statement": [
+          {
+            "Action": [
+              "logs:CreateLogGroup",
+              "logs:CreateLogStream",
+              "logs:PutLogEvents",
+              "dynamodb:GetItem",
+              "dynamodb:Query",
+              "dynamodb:PutItem",
+              "dynamodb:Batch*",
+              "dynamodb:DeleteItem",
+              "ssm:PutParameter",
+              "ssm:GetParameter",
+              "kms:Decrypt",
+              "sqs:ReceiveMessage",
+              "sqs:DeleteMessage",
+              "sqs:GetQueueAttributes",
+              "sns:Publish",
+              "sns:Subscribe"
+            ],
+            "Effect": "Allow",
+            "Resource": "*"
+          }
+        ],
+        "Version": "2012-10-17"
+      },
+      "tags": {}
+    }
+  }
+}
