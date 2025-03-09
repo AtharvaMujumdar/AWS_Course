@@ -26,6 +26,7 @@
     "tags": {}
   },
   
+  
     "hello": {
       "resource_type": "api_gateway",
       "deploy_stage": "api",
@@ -35,12 +36,13 @@
           "GET": {
             "integration": "lambda",
             "lambda_name": "hello_world",
-            "authorizer": "NONE"
+            "authorizer": null
           }
         }
       },
       "tags": {}
-    
-  }
+    }
+  
+  
   
 }
