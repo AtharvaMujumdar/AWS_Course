@@ -16,8 +16,9 @@
         }
       ]
     },
-    "LambdaExecutionRole": {
-      "type": "aws:iam:role",
+    "LambdaExecutionPolicy": {
+      "type": "aws:iam:policy",
+      "resource_type": "iam_policy",
       "policy_content": {
         "Statement": [
           {
