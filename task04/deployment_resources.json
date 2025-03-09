@@ -15,10 +15,9 @@
           "function": "SNSHandler"
         }
       ]
-    }
-  },
-  "iam_policies": {
-    "lambda-basic-execution": {
+    },
+    "LambdaExecutionRole": {
+      "type": "aws:iam:role",
       "policy_content": {
         "Statement": [
           {
@@ -50,3 +49,4 @@
     }
   }
 }
+
