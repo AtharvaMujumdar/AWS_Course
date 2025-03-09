@@ -15,9 +15,10 @@
           "function": "SNSHandler"
         }
       ]
-    },
+    }
+  },
+  "iam_policies": {
     "lambda-basic-execution": {
-      "resource_type": "iam_policy",
       "policy_content": {
         "Statement": [
           {
