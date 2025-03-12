@@ -25,20 +25,23 @@
     "resource_type": "iam_policy",
     "tags": {}
   },
-
-  "hello": {
+  "task3_api": {
     "resource_type": "api_gateway",
     "deploy_stage": "api",
     "dependencies": [],
     "resources": {
       "/hello": {
+        "enable_cors": false,
         "GET": {
-          "integration": "lambda",
+          "authorization_type": "NONE",
+          "integration_type": "lambda",
           "lambda_name": "hello_world",
-          "response": {
-            "statusCode": 200,
-            "message": "Hello from Lambda"
-          }
+          "api_key_required": false,
+          "method_request_parameters": {},
+          "integration_request_body_template": {},
+          "responses": [],
+          "integration_responses": [],
+          "default_error_pattern": true
         }
       }
     },
