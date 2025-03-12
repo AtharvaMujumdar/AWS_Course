@@ -18,7 +18,7 @@
             "s3:PutObject"
           ],
           "Effect": "Allow",
-          "Resource": "*"
+          "Resource": "arn:aws:s3:::cmtr-605734c9-uuid-storage-j624/*"
         }
       ],
       "Version": "2012-10-17"
