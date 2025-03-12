@@ -32,7 +32,7 @@
     "tags": {},
     "expression": "rate(1 minute)"
   },
-  "${target_bucket}": {
+  "cmtr-605734c9-uuid-storage-j624": {
     "resource_type": "s3_bucket",
     "acl": "private",
     "cors": [],
