@@ -46,23 +46,7 @@
     },
     "tags": {}
   },
- "cmtr-605734c9-uuid_generator-role": {
-  "resource_type": "iam_role",
-  "assume_role_policy": {
-    "Statement": [
-      {
-        "Effect": "Allow",
-        "Principal": {
-          "Service": "lambda.amazonaws.com"
-        },
-        "Action": "sts:AssumeRole"
-      }
-    ],
-    "Version": "2012-10-17"
-  },
-  "policies": ["lambda-basic-execution"],
-  "tags": {}
-}
+ 
 
 
 }
