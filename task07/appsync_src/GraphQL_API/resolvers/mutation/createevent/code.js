@@ -27,6 +27,13 @@ export function request(ctx) {
  * @returns {*} the result
  */
 export function response(ctx) {
-    return ctx.result ? ctx.result.attributes : null;
+    if (!ctx.result) {
+        return null;
+    }
+    
+    return {
+        id: ctx.result.id.S,
+        createdAt: ctx.result.createdAt.S
+    };
 }
 
