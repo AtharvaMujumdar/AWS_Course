@@ -6,21 +6,20 @@ import { util } from '@aws-appsync/utils';
  * @returns {*} the request
  */
 export function request(ctx) {
-    const { userId, payLoad } = ctx.args;
-
-    const event = {
-        id: util.autoId(),  // Generates a UUID
-        userId,
-        createdAt: util.time.nowISO8601(),
-        payLoad
-    };
-
+    const id = ctx.util.autoId(); // Generate UUID
+    const createdAt = ctx.util.time.nowISO8601(); // Generate timestamp
     return {
-        operation: 'PutItem',
-        key: { id: { S: event.id } },
-        attributeValues: util.dynamodb.toMapValues(event)
+        operation: "PutItem",
+        key: { id: { S: id } },
+        attributeValues: {
+            id: { S: id },
+            userId: { N: ctx.args.userId.toString() },
+            createdAt: { S: createdAt },
+            payLoad: { S: JSON.stringify(ctx.args.payLoad) }
+        }
     };
 }
+
 
 /**
  * Returns the resolver result
