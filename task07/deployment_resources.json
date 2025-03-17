@@ -56,7 +56,7 @@
     ],
     "allowed_accounts": [],
     "instance_profile": false,
-    "permissions_boundary": "",
+    
     "tags": {}
   }
 }
