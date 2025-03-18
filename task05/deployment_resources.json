@@ -9,6 +9,11 @@
             "logs:PutLogEvents",
             "dynamodb:GetItem",
             "dynamodb:Query",
+            "dynamodb:GetItem",
+            "dynamodb:Query",
+            "dynamodb:PutItem",
+            "dynamodb:Batch*",
+            "dynamodb:DeleteItem",
             "dynamodb:PutItem",
             "dynamodb:Batch*",
             "dynamodb:DeleteItem",
@@ -25,7 +30,7 @@
     "resource_type": "iam_policy",
     "tags": {}
   },
-  "Events": {
+  "${target_table}": {
     "resource_type": "dynamodb_table",
     "hash_key_name": "id",
     "hash_key_type": "S",
@@ -35,16 +40,27 @@
     "autoscaling": [],
     "tags": {}
   },
-  "appsync_role": {
-    "resource_type": "iam_role",
-    "principal_service": "appsync",
-    "predefined_policies": [],
-    "custom_policies": [
-      "lambda-basic-execution"
-    ],
-    "allowed_accounts": [],
-    "instance_profile": false,
-    "permissions_boundary": "",
+  "task5_api": {
+    "resource_type": "api_gateway",
+    "deploy_stage": "api",
+    "dependencies": [],
+    "resources": {
+      "/events": {
+        "enable_cors": false,
+        "POST": {
+          "authorization_type": "NONE",
+          "enable_proxy": true,
+          "integration_type": "lambda",
+          "lambda_name": "api_handler",
+          "api_key_required": false,
+          "method_request_parameters": {},
+          "integration_request_body_template": {},
+          "responses": [],
+          "integration_responses": [],
+          "default_error_pattern": true
+        }
+      }
+    },
     "tags": {}
   }
 }

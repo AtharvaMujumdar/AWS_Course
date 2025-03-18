@@ -12,14 +12,13 @@
             "dynamodb:PutItem",
             "dynamodb:Batch*",
             "dynamodb:DeleteItem",
+            "s3:PutObject",
             "ssm:PutParameter",
             "ssm:GetParameter",
-            "kms:Decrypt",
-            "s3:PutObject"
+            "kms:Decrypt"
           ],
           "Effect": "Allow",
-          "Resource": ["arn:aws:s3:::cmtr-605734c9-uuid-storage-j624/*",
-          "arn:aws:logs:*:*:*"]
+          "Resource": "*"
         }
       ],
       "Version": "2012-10-17"
@@ -27,13 +26,7 @@
     "resource_type": "iam_policy",
     "tags": {}
   },
-  "uuid_trigger": {
-    "resource_type": "cloudwatch_rule",
-    "rule_type": "schedule",
-    "tags": {},
-    "expression": "rate(1 minute)"
-  },
-  "cmtr-605734c9-uuid-storage-j624": {
+  "${target_bucket}": {
     "resource_type": "s3_bucket",
     "acl": "private",
     "cors": [],
@@ -46,23 +39,10 @@
     },
     "tags": {}
   },
- "cmtr-605734c9-uuid_generator-role": {
-  "resource_type": "iam_role",
-  "assume_role_policy": {
-    "Statement": [
-      {
-        "Effect": "Allow",
-        "Principal": {
-          "Service": "lambda.amazonaws.com"
-        },
-        "Action": "sts:AssumeRole"
-      }
-    ],
-    "Version": "2012-10-17"
-  },
-  "policies": ["lambda-basic-execution"],
-  "tags": {}
-}
-
-
+  "uuid_trigger": {
+    "resource_type": "cloudwatch_rule",
+    "rule_type": "schedule",
+    "tags": {},
+    "expression": "rate(1 minute)"
+  }
 }
